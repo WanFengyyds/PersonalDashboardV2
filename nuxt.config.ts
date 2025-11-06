@@ -4,5 +4,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
+  },
+  runtimeConfig: {
+    // Server-side environment variables
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY
   }
 })

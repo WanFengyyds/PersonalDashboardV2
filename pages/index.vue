@@ -1,5 +1,5 @@
 <script setup lang="ts">
-navigateTo('/finance', { replace: true })
+navigateTo('/login', { replace: true })
 </script>
 
 <template>
