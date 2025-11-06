@@ -48,6 +48,7 @@ export default defineEventHandler(async (event) => {
   } catch (err) {
     // Catch any unexpected errors
     console.error('Login error:', err);
+    console.error('Login error details:', err instanceof Error ? err.message : err);
     // Set response status to 500 (Internal Server Error)
     setResponseStatus(event, 500);
     return {
