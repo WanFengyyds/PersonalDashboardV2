@@ -1,7 +1,8 @@
 <script setup lang="ts">
-navigateTo('/login', { replace: true })
+navigateTo('/home', { replace: true })
 </script>
 
 <template>
-  <div></div>
+  <div>
+  </div>
 </template>
