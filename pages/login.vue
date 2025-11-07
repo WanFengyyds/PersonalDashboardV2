@@ -117,7 +117,7 @@ const handleLogin = async () => {
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(252, 237, 47, 0.2);
+  border: 1px solid rgba(255, 214, 10, 0.2);
 }
 
 .login-header {
@@ -128,8 +128,8 @@ const handleLogin = async () => {
 .login-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #fced2f;
-  text-shadow: 0 0 30px rgba(252, 237, 47, 0.3);
+  color: #FFD60A;
+  text-shadow: 0 0 30px rgba(255, 214, 10, 0.3);
   margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
@@ -184,8 +184,8 @@ const handleLogin = async () => {
 }
 
 .input-box:focus {
-  border-color: rgba(252, 237, 47, 0.6);
-  box-shadow: 0 0 0 3px rgba(252, 237, 47, 0.1);
+  border-color: rgba(255, 214, 10, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 214, 10, 0.1);
   background: rgba(20, 20, 30, 0.8);
 }
 
@@ -202,7 +202,7 @@ const handleLogin = async () => {
 .login-button {
   margin-top: 1rem;
   padding: 1.125rem 1.5rem;
-  background: linear-gradient(135deg, #fced2f 0%, #ffa500 100%);
+  background: linear-gradient(135deg, #FFD60A 0%, #ffa500 100%);
   color: #1a1a1a;
   border: none;
   border-radius: 0.75rem;
@@ -211,24 +211,24 @@ const handleLogin = async () => {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow:
-    0 4px 15px rgba(252, 237, 47, 0.3),
-    0 0 20px rgba(252, 237, 47, 0.1);
+    0 4px 15px rgba(255, 214, 10, 0.3),
+    0 0 20px rgba(255, 214, 10, 0.1);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .login-button:hover:not(:disabled) {
   box-shadow:
-    0 6px 20px rgba(252, 237, 47, 0.4),
-    0 0 30px rgba(252, 237, 47, 0.2);
+    0 6px 20px rgba(255, 214, 10, 0.4),
+    0 0 30px rgba(255, 214, 10, 0.2);
   transform: translateY(-2px);
 }
 
 .login-button:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    0 4px 15px rgba(252, 237, 47, 0.3),
-    0 0 20px rgba(252, 237, 47, 0.1);
+    0 4px 15px rgba(255, 214, 10, 0.3),
+    0 0 20px rgba(255, 214, 10, 0.1);
 }
 
 .login-button:disabled {
@@ -249,7 +249,7 @@ const handleLogin = async () => {
 }
 
 .signup-link {
-  color: #fced2f;
+  color: #FFD60A;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;

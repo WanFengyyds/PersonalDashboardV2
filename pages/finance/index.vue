@@ -32,7 +32,7 @@
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
-  text-shadow: 0 0 30px rgba(252, 237, 47, 0.3);
+  text-shadow: 0 0 30px rgba(255, 214, 10, 0.3);
 }
 .dashboard-subtitle {
   color: rgba(255, 255, 255, 0.6);

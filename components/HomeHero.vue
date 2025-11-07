@@ -75,8 +75,8 @@
 }
 
 .highlight {
-    color: #fced2f;
-    text-shadow: 0 0 20px rgba(252, 237, 47, 0.5);
+    color: #FFD60A;
+    text-shadow: 0 0 20px rgba(255, 214, 10, 0.5);
 }
 
 .hero-subtitle {
@@ -114,26 +114,26 @@
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #fced2f 0%, #ffa500 100%);
+    background: linear-gradient(135deg, #FFD60A 0%, #ffa500 100%);
     color: #1a1a1a;
-    box-shadow: 0 4px 15px rgba(252, 237, 47, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 214, 10, 0.3);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(252, 237, 47, 0.5);
+    box-shadow: 0 6px 20px rgba(255, 214, 10, 0.5);
     transform: translateY(-2px);
 }
 
 .btn-secondary {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
-    border: 2px solid rgba(252, 237, 47, 0.3);
+    border: 2px solid rgba(255, 214, 10, 0.3);
     backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(252, 237, 47, 0.5);
+    border-color: rgba(255, 214, 10, 0.5);
     transform: translateY(-2px);
 }
 
@@ -158,15 +158,15 @@
     background: rgba(30, 30, 40, 0.6);
     backdrop-filter: blur(10px);
     border-radius: 1rem;
-    border: 1px solid rgba(252, 237, 47, 0.2);
+    border: 1px solid rgba(255, 214, 10, 0.2);
     padding: 1.5rem;
     transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(252, 237, 47, 0.4);
-    box-shadow: 0 8px 24px rgba(252, 237, 47, 0.15);
+    border-color: rgba(255, 214, 10, 0.4);
+    box-shadow: 0 8px 24px rgba(255, 214, 10, 0.15);
 }
 
 .feature-icon {
@@ -176,7 +176,7 @@
 
 .feature-card h3 {
     font-size: 1.25rem;
-    color: #fced2f;
+    color: #FFD60A;
     margin: 0 0 0.5rem 0;
     font-weight: 700;
 }

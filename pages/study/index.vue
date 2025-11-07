@@ -33,7 +33,7 @@
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
-  text-shadow: 0 0 30px rgba(252, 237, 47, 0.3);
+  text-shadow: 0 0 30px rgba(255, 214, 10, 0.3);
 }
 
 .dashboard-subtitle {
@@ -57,7 +57,7 @@
   padding: 3rem;
   background: rgba(30, 30, 40, 0.6);
   border-radius: 1.5rem;
-  border: 1px solid rgba(252, 237, 47, 0.2);
+  border: 1px solid rgba(255, 214, 10, 0.2);
 }
 
 .icon {
@@ -68,7 +68,7 @@
 .placeholder h2 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #fced2f;
+  color: #FFD60A;
   margin-bottom: 1rem;
 }
 

@@ -61,7 +61,7 @@
   height: 420px;
   box-sizing: border-box;
   margin-top: 2rem;
-  border: 1px solid rgba(252, 237, 47, 0.2);
+  border: 1px solid rgba(255, 214, 10, 0.2);
 }
 .history-Title {
   font-size: 1.5em;
@@ -87,12 +87,12 @@
 }
 
 .transaction-list::-webkit-scrollbar-thumb {
-  background: rgba(252, 237, 47, 0.4);
+  background: rgba(255, 214, 10, 0.4);
   border-radius: 10px;
 }
 
 .transaction-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(252, 237, 47, 0.6);
+  background: rgba(255, 214, 10, 0.6);
 }
 
 .transaction-item {
@@ -107,9 +107,9 @@
 }
 
 .transaction-item:hover {
-  background-color: rgba(252, 237, 47, 0.05);
+  background-color: rgba(255, 214, 10, 0.05);
   transform: translateX(4px);
-  border-left: 3px solid rgba(252, 237, 47, 0.6);
+  border-left: 3px solid rgba(255, 214, 10, 0.6);
 }
 
 .transaction-item:last-child {

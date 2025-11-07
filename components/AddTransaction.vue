@@ -49,7 +49,7 @@ main {
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(252, 237, 47, 0.2);
+  border: 1px solid rgba(255, 214, 10, 0.2);
 }
 
 .add-Title {
@@ -89,8 +89,8 @@ main {
 }
 
 .input-box:focus {
-  border-color: rgba(252, 237, 47, 0.6);
-  box-shadow: 0 0 0 3px rgba(252, 237, 47, 0.1);
+  border-color: rgba(255, 214, 10, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 214, 10, 0.1);
   background: rgba(20, 20, 30, 0.6);
 }
 
@@ -126,13 +126,13 @@ select.input-box option {
 }
 
 select.input-box option:hover {
-  background-color: rgba(252, 237, 47, 0.1);
+  background-color: rgba(255, 214, 10, 0.1);
   color: #ffffff;
 }
 
 select.input-box option:checked {
-  background-color: rgba(252, 237, 47, 0.2);
-  color: #fced2f;
+  background-color: rgba(255, 214, 10, 0.2);
+  color: #FFD60A;
   font-weight: 600;
 }
 
@@ -145,7 +145,7 @@ select.input-box option:disabled {
 button[type='submit'] {
   margin-top: 0.75rem;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, #fced2f 0%, #ffa500 100%);
+  background: linear-gradient(135deg, #FFD60A 0%, #ffa500 100%);
   color: #1a1a1a;
   border: none;
   border-radius: 0.75rem;
@@ -154,8 +154,8 @@ button[type='submit'] {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow:
-    0 4px 15px rgba(252, 237, 47, 0.3),
-    0 0 20px rgba(252, 237, 47, 0.1);
+    0 4px 15px rgba(255, 214, 10, 0.3),
+    0 0 20px rgba(255, 214, 10, 0.1);
   width: 100%;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -163,15 +163,15 @@ button[type='submit'] {
 
 button[type='submit']:hover {
   box-shadow:
-    0 6px 20px rgba(252, 237, 47, 0.4),
-    0 0 30px rgba(252, 237, 47, 0.2);
+    0 6px 20px rgba(255, 214, 10, 0.4),
+    0 0 30px rgba(255, 214, 10, 0.2);
   transform: translateY(-2px);
 }
 
 button[type='submit']:active {
   transform: translateY(0);
   box-shadow:
-    0 4px 15px rgba(252, 237, 47, 0.3),
-    0 0 20px rgba(252, 237, 47, 0.1);
+    0 4px 15px rgba(255, 214, 10, 0.3),
+    0 0 20px rgba(255, 214, 10, 0.1);
 }
 </style>

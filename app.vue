@@ -48,7 +48,7 @@
   padding: 0.75rem 2%;
   background: rgba(30, 30, 40, 0.8);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(252, 237, 47, 0.2);
+  border-bottom: 1px solid rgba(255, 214, 10, 0.2);
   color: white;
   z-index: 100;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -57,8 +57,8 @@
 .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #fced2f;
-  text-shadow: 0 0 20px rgba(252, 237, 47, 0.3);
+  color: #FFD60A;
+  text-shadow: 0 0 20px rgba(255, 214, 10, 0.3);
   letter-spacing: 0.02em;
 }
 
@@ -67,7 +67,7 @@
   background: rgba(20, 20, 30, 0.6);
   border-radius: 0.75rem;
   padding: 0.25rem;
-  border: 1px solid rgba(252, 237, 47, 0.15);
+  border: 1px solid rgba(255, 214, 10, 0.15);
 }
 
 .button-nav {
@@ -87,11 +87,11 @@
   left: 0.25rem;
   width: calc(50% - 0.35rem);
   height: calc(100% - 0.5rem);
-  background: linear-gradient(135deg, #fced2f 0%, #ffa500 100%);
+    background: linear-gradient(135deg, #FFD60A 0%, #FFA500 100%);
   border-radius: 0.625rem;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   z-index: 0;
-  box-shadow: 0 2px 10px rgba(252, 237, 47, 0.4);
+    box-shadow: 0 2px 10px rgba(255, 214, 10, 0.4);
 }
 
 /* Move indicator for Study (2nd button) */
@@ -170,12 +170,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(252, 237, 47, 0.4);
+  background: rgba(255, 214, 10, 0.4);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(252, 237, 47, 0.6);
+  background: rgba(255, 214, 10, 0.6);
 }
 
 /* Page transitions */

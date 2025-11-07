@@ -4,6 +4,10 @@
 <template>
     <div class="home-hero">
         <HomeHero />
+        
+    </div>
+    <div class="features-section">
+        <HomeFeatures />
     </div>
 </template>
 
@@ -15,6 +19,11 @@
     align-items: center;
     height: 100vh;
     width: 100%;
+}
+
+.features-section {
+    padding: 4rem 2rem;
+    background-color: black;
 }
 </style>
 

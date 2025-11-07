@@ -51,7 +51,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(252, 237, 47, 0.2);
+  border: 1px solid rgba(255, 214, 10, 0.2);
 }
 
 .stats-card::before {
@@ -61,7 +61,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(252, 237, 47, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 214, 10, 0.1) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -69,10 +69,10 @@
 /* Animation when hover card */
 .stats-card:hover {
   box-shadow:
-    0 12px 40px rgba(252, 237, 47, 0.15),
+    0 12px 40px rgba(255, 214, 10, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
-  border-color: rgba(252, 237, 47, 0.4);
+  border-color: rgba(255, 214, 10, 0.4);
 }
 
 .stats-card:hover::before {
@@ -81,16 +81,16 @@
 
 .stats-card:nth-child(2) {
   background: rgba(30, 30, 40, 0.6);
-  border: 1px solid rgba(252, 237, 47, 0.2);
+  border: 1px solid rgba(255, 214, 10, 0.2);
 }
 
 .stats-card:nth-child(3) {
   background: rgba(30, 30, 40, 0.6);
-  border: 1px solid rgba(252, 237, 47, 0.2);
+  border: 1px solid rgba(255, 214, 10, 0.2);
 }
 
 .stats-card h1 {
-  color: rgba(252, 237, 47, 0.9);
+  color: rgba(255, 214, 10, 0.9);
 }
 
 /* Stats showing part of the cards */
@@ -110,7 +110,7 @@
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 10px rgba(252, 237, 47, 0.2);
+  text-shadow: 0 2px 10px rgba(255, 214, 10, 0.2);
 }
 .income-number {
   color: #ffffff;
