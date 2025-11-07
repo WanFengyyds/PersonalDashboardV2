@@ -92,10 +92,12 @@
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1rem;
+    position: relative;
+    z-index: 10;
 }
 
 .btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
@@ -107,6 +109,10 @@
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    user-select: none;
+    position: relative;
+    z-index: 10;
+    pointer-events: all;
 }
 
 .btn .icon {

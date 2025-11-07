@@ -2,17 +2,22 @@
 </script>
 
 <template>
-    <div class="home-hero">
-        <HomeHero />
-        
-    </div>
-    <div class="features-section">
-        <HomeFeatures />
+    <div class="home-page">
+        <div class="home-hero">
+            <HomeHero />
+        </div>
+        <div class="features-section">
+            <HomeFeatures />
+        </div>
     </div>
 </template>
 
 
 <style scoped>
+.home-page {
+    width: 100%;
+}
+
 .home-hero {
     display: flex;
     justify-content: center;
