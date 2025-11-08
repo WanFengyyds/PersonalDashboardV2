@@ -6,12 +6,51 @@ const isHomePage = computed(() => {
   return route.path === '/' || route.path === '/home' || route.path === '/login';
 })
 
-const loggedIn = computed(() => {
+// Reactive state for login status
+const loggedIn = ref(false)
+
+// Check login status on mount and watch for changes
+onMounted(() => {
   if (process.client) {
-    return !!localStorage.getItem('session');
+    loggedIn.value = !!localStorage.getItem('session')
+    
+    // Listen for storage changes (e.g., from login page)
+    window.addEventListener('storage', checkLoginStatus)
+    
+    // Listen for custom event when login happens in same tab
+    window.addEventListener('login', checkLoginStatus)
+    window.addEventListener('logout', checkLoginStatus)
   }
-  return false;
-});
+})
+
+onUnmounted(() => {
+  if (process.client) {
+    window.removeEventListener('storage', checkLoginStatus)
+    window.removeEventListener('login', checkLoginStatus)
+    window.removeEventListener('logout', checkLoginStatus)
+  }
+})
+
+function checkLoginStatus() {
+  if (process.client) {
+    loggedIn.value = !!localStorage.getItem('session')
+  }
+}
+
+// Handle logout
+function handleLogout() {
+  if (process.client) {
+    // Clear session from localStorage
+    localStorage.removeItem('session')
+    localStorage.removeItem('user')
+    
+    // Dispatch logout event
+    window.dispatchEvent(new Event('logout'))
+    
+    // Redirect to home page
+    navigateTo('/home')
+  }
+}
 </script>
 
 <template>
@@ -26,11 +65,21 @@ const loggedIn = computed(() => {
         <NuxtLink to="/study" class="nav-button">Study</NuxtLink>
       </nav>
     </div>
+    
+    <!-- Login button - only show when NOT logged in -->
     <div class="login-logout" v-if="!loggedIn">
       <NuxtLink to="/login" class="nav-button login-button">
         <span class="login-icon">🔑</span>
         Login
       </NuxtLink>
+    </div>
+    
+    <!-- Logout button - only show when logged in -->
+    <div class="login-logout" v-if="loggedIn">
+      <button @click="handleLogout" class="nav-button logout-button">
+        <span class="logout-icon">🚪</span>
+        Logout
+      </button>
     </div>
   </div>
 
@@ -205,6 +254,53 @@ const loggedIn = computed(() => {
   50% {
     transform: translateY(-3px) rotate(10deg);
   }
+}
+
+/* Logout Button Special Styling */
+.logout-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+  font-weight: 700;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.logout-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.logout-button:hover::before {
+  left: 100%;
+}
+
+.logout-button:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 214, 10, 0.4);
+  box-shadow: 0 6px 25px rgba(255, 214, 10, 0.2);
+}
+
+.logout-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logout-icon {
+  font-size: 1.1rem;
 }
 
 .login-logout {

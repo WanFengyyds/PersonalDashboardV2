@@ -34,6 +34,10 @@ const handleLogin = async () => {
     if (response?.session) {
         // Dont need to store user data beacause it can be fetched from session from a ramdom bug
         localStorage.setItem('session', JSON.stringify(response.session));
+        
+        // Dispatch custom event to notify navbar of login
+        window.dispatchEvent(new Event('login'));
+        
         // Redirect to finance page
         navigateTo('/finance');
     }
