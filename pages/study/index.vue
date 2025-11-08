@@ -1,4 +1,8 @@
 <script setup lang="ts">
+// Authentication requirement to access the study planner page
+definePageMeta({
+  middleware: 'auth'
+})
 </script>
 
 <template>

@@ -1,16 +1,36 @@
 <script setup lang="ts">
+const route = useRoute()
+
+// Check if we're on the home page
+const isHomePage = computed(() => {
+  return route.path === '/' || route.path === '/home' || route.path === '/login';
+})
+
+const loggedIn = computed(() => {
+  if (process.client) {
+    return !!localStorage.getItem('session');
+  }
+  return false;
+});
 </script>
 
 <template>
   <div class="navbar">
     <div>
-      <h1 class="title">KaiPlanner</h1>
+       <NuxtLink to="/home" class="title-link"><h1 class="title">KaiPlanner</h1></NuxtLink>
+      
     </div>
-    <div class="options">
+    <div class="options" v-if="!isHomePage">
       <nav class="button-nav">
         <NuxtLink to="/finance" class="nav-button">Finance</NuxtLink>
         <NuxtLink to="/study" class="nav-button">Study</NuxtLink>
       </nav>
+    </div>
+    <div class="login-logout" v-if="!loggedIn">
+      <NuxtLink to="/login" class="nav-button login-button">
+        <span class="login-icon">🔑</span>
+        Login
+      </NuxtLink>
     </div>
   </div>
 
@@ -54,12 +74,23 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+.title-link {
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.title-link:hover {
+  transform: scale(1.05);
+}
+
 .title {
   font-size: 1.5rem;
   font-weight: 700;
   color: #FFD60A;
   text-shadow: 0 0 20px rgba(255, 214, 10, 0.3);
   letter-spacing: 0.02em;
+  cursor: pointer;
 }
 
 .options {
@@ -119,6 +150,66 @@
 .nav-button.router-link-exact-active {
   color: #1a1a1a;
   font-weight: 700;
+}
+
+/* Login Button Special Styling */
+.login-button {
+  background: linear-gradient(135deg, #FFD60A 0%, #FFA500 100%);
+  color: #1a1a1a !important;
+  font-weight: 700;
+  border: 2px solid rgba(255, 214, 10, 0.5);
+  box-shadow: 0 4px 15px rgba(255, 214, 10, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.login-button:hover::before {
+  left: 100%;
+}
+
+.login-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(255, 214, 10, 0.5);
+  border-color: rgba(255, 214, 10, 0.8);
+}
+
+.login-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 15px rgba(255, 214, 10, 0.4);
+}
+
+.login-icon {
+  font-size: 1.1rem;
+  animation: keyBounce 2s ease-in-out infinite;
+}
+
+@keyframes keyBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(10deg);
+  }
+}
+
+.login-logout {
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 640px) {

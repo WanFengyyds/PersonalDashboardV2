@@ -1,4 +1,8 @@
 <script setup lang="ts">
+// Authentication requirement to access the finance page
+definePageMeta({
+  middleware: 'auth'
+})
 </script>
 
 <template>
