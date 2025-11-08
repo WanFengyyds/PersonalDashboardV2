@@ -39,9 +39,9 @@ main {
   margin-top: 2rem;
 }
 .transaction-box {
-  background: rgba(30, 30, 40, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
-  color: #ffffff;
+  color: #386641;
   padding: 2rem;
   border-radius: 1.25rem;
   box-shadow:
@@ -49,13 +49,13 @@ main {
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(255, 214, 10, 0.2);
+  border: 1px solid rgba(167, 201, 87, 0.2);
 }
 
 .add-Title {
   font-size: 1.5em;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  color: #386641;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -69,7 +69,7 @@ main {
 .form-group label {
   font-size: 0.85em;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(56, 102, 65, 0.7);
   margin-bottom: 0.5rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -79,28 +79,28 @@ main {
   padding: 0.875rem 1.125rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
-  color: #ffffff;
+  color: #386641;
   font-size: 1em;
   font-weight: 500;
-  background: rgba(20, 20, 30, 0.4);
+  background: rgba(255, 255, 255, 0.4);
   transition: all 0.2s ease-in-out;
   outline: none;
   box-sizing: border-box;
 }
 
 .input-box:focus {
-  border-color: rgba(255, 214, 10, 0.6);
-  box-shadow: 0 0 0 3px rgba(255, 214, 10, 0.1);
-  background: rgba(20, 20, 30, 0.6);
+  border-color: rgba(167, 201, 87, 0.6);
+  box-shadow: 0 0 0 3px rgba(167, 201, 87, 0.1);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .input-box:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(56, 102, 65, 0.2);
 }
 
 /* Placeholder styling */
 .input-box::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(56, 102, 65, 0.4);
   font-weight: 400;
 }
 
@@ -118,7 +118,7 @@ select.input-box {
 select.input-box option {
   padding: 0.75rem 1rem;
   background-color: #1a1a2e;
-  color: #ffffff;
+  color: #386641;
   font-size: 1em;
   font-weight: 500;
   line-height: 1.6;
@@ -126,18 +126,18 @@ select.input-box option {
 }
 
 select.input-box option:hover {
-  background-color: rgba(255, 214, 10, 0.1);
-  color: #ffffff;
+  background-color: rgba(167, 201, 87, 0.1);
+  color: #386641;
 }
 
 select.input-box option:checked {
-  background-color: rgba(255, 214, 10, 0.2);
-  color: #FFD60A;
+  background-color: rgba(167, 201, 87, 0.2);
+  color: #a7c957;
   font-weight: 600;
 }
 
 select.input-box option:disabled {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(56, 102, 65, 0.3);
   cursor: not-allowed;
 }
 
@@ -145,8 +145,8 @@ select.input-box option:disabled {
 button[type='submit'] {
   margin-top: 0.75rem;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, #FFD60A 0%, #ffa500 100%);
-  color: #1a1a1a;
+  background: #f2e8cf 100%);
+  color: #386641;
   border: none;
   border-radius: 0.75rem;
   font-size: 1.05em;
@@ -154,8 +154,8 @@ button[type='submit'] {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow:
-    0 4px 15px rgba(255, 214, 10, 0.3),
-    0 0 20px rgba(255, 214, 10, 0.1);
+    0 4px 15px rgba(167, 201, 87, 0.3),
+    0 0 20px rgba(167, 201, 87, 0.1);
   width: 100%;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -163,15 +163,15 @@ button[type='submit'] {
 
 button[type='submit']:hover {
   box-shadow:
-    0 6px 20px rgba(255, 214, 10, 0.4),
-    0 0 30px rgba(255, 214, 10, 0.2);
+    0 6px 20px rgba(167, 201, 87, 0.4),
+    0 0 30px rgba(167, 201, 87, 0.2);
   transform: translateY(-2px);
 }
 
 button[type='submit']:active {
   transform: translateY(0);
   box-shadow:
-    0 4px 15px rgba(255, 214, 10, 0.3),
-    0 0 20px rgba(255, 214, 10, 0.1);
+    0 4px 15px rgba(167, 201, 87, 0.3),
+    0 0 20px rgba(167, 201, 87, 0.1);
 }
 </style>

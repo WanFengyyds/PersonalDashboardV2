@@ -34,12 +34,12 @@ definePageMeta({
 .dashboard-title {
   font-size: 3em;
   font-weight: 700;
-  color: #ffffff;
+  color: #386641;
   letter-spacing: -0.02em;
-  text-shadow: 0 0 30px rgba(255, 214, 10, 0.3);
+  text-shadow: 0 0 30px rgba(167, 201, 87, 0.3);
 }
 .dashboard-subtitle {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(56, 102, 65, 0.7);
   font-size: 1.15em;
   font-weight: 400;
   letter-spacing: 0.01em;

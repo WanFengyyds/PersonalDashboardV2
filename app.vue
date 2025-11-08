@@ -115,12 +115,12 @@ function handleLogout() {
   align-items: center;
   width: 100%;
   padding: 0.75rem 2%;
-  background: rgba(30, 30, 40, 0.8);
+  background: rgba(167, 201, 87, 0.25);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 214, 10, 0.2);
-  color: white;
+  border-bottom: 2px solid rgba(106, 153, 78, 0.4);
+  color: #386641;
   z-index: 100;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(56, 102, 65, 0.15);
 }
 
 .title-link {
@@ -136,25 +136,25 @@ function handleLogout() {
 .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #FFD60A;
-  text-shadow: 0 0 20px rgba(255, 214, 10, 0.3);
+  color: #386641;
+  text-shadow: 0 0 20px rgba(106, 153, 78, 0.2);
   letter-spacing: 0.02em;
   cursor: pointer;
 }
 
 .options {
   display: flex;
-  background: rgba(20, 20, 30, 0.6);
+  background: rgba(242, 232, 207, 0.5);
   border-radius: 0.75rem;
   padding: 0.25rem;
-  border: 1px solid rgba(255, 214, 10, 0.15);
+  border: 1px solid rgba(106, 153, 78, 0.2);
 }
 
 .button-nav {
   display: flex;
   gap: 0.25rem;
   position: relative;
-  background: rgba(20, 20, 30, 0.6);
+  background: rgba(242, 232, 207, 0.5);
   border-radius: 0.75rem;
   padding: 0.25rem;
 }
@@ -167,11 +167,11 @@ function handleLogout() {
   left: 0.25rem;
   width: calc(50% - 0.35rem);
   height: calc(100% - 0.5rem);
-    background: linear-gradient(135deg, #FFD60A 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #a7c957 0%, #6a994e 100%);
   border-radius: 0.625rem;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   z-index: 0;
-    box-shadow: 0 2px 10px rgba(255, 214, 10, 0.4);
+  box-shadow: 0 2px 10px rgba(167, 201, 87, 0.4);
 }
 
 /* Move indicator for Study (2nd button) */
@@ -181,7 +181,7 @@ function handleLogout() {
 
 .nav-button {
   padding: 0.625rem 1.5rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(56, 102, 65, 0.7);
   font-weight: 600;
   font-size: 0.9rem;
   text-decoration: none;
@@ -197,17 +197,17 @@ function handleLogout() {
 }
 
 .nav-button.router-link-exact-active {
-  color: #1a1a1a;
+  color: #f2e8cf;
   font-weight: 700;
 }
 
 /* Login Button Special Styling */
 .login-button {
-  background: linear-gradient(135deg, #FFD60A 0%, #FFA500 100%);
-  color: #1a1a1a !important;
+  background: linear-gradient(135deg, #6a994e 0%, #386641 100%);
+  color: #f2e8cf !important;
   font-weight: 700;
-  border: 2px solid rgba(255, 214, 10, 0.5);
-  box-shadow: 0 4px 15px rgba(255, 214, 10, 0.3);
+  border: 2px solid rgba(106, 153, 78, 0.5);
+  box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,13 +233,13 @@ function handleLogout() {
 
 .login-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 25px rgba(255, 214, 10, 0.5);
-  border-color: rgba(255, 214, 10, 0.8);
+  box-shadow: 0 6px 25px rgba(167, 201, 87, 0.5);
+  border-color: rgba(167, 201, 87, 0.8);
 }
 
 .login-button:active {
   transform: translateY(-1px);
-  box-shadow: 0 3px 15px rgba(255, 214, 10, 0.4);
+  box-shadow: 0 3px 15px rgba(167, 201, 87, 0.4);
 }
 
 .login-icon {
@@ -258,11 +258,11 @@ function handleLogout() {
 
 /* Logout Button Special Styling */
 .logout-button {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff !important;
+  background: rgba(164, 184, 196, 0.15);
+  color: #386641 !important;
   font-weight: 700;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(106, 153, 78, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,9 +289,9 @@ function handleLogout() {
 
 .logout-button:hover {
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 214, 10, 0.4);
-  box-shadow: 0 6px 25px rgba(255, 214, 10, 0.2);
+  background: rgba(164, 184, 196, 0.25);
+  border-color: rgba(106, 153, 78, 0.5);
+  box-shadow: 0 6px 25px rgba(106, 153, 78, 0.2);
 }
 
 .logout-button:active {
@@ -338,10 +338,10 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background: #f2e8cf;
   background-attachment: fixed;
   min-height: 100vh;
-  color: #ffffff;
+  color: #386641;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -353,16 +353,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(242, 232, 207, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 214, 10, 0.4);
+  background: rgba(106, 153, 78, 0.5);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 214, 10, 0.6);
+  background: rgba(106, 153, 78, 0.7);
 }
 
 /* Page transitions */

@@ -16,7 +16,7 @@
                     Get Started
                 </NuxtLink>
                 <NuxtLink to="/finance" class="btn btn-secondary">
-                    <span class="icon">👁️</span>
+                    <span class="icon">👁</span>
                     View Demo
                 </NuxtLink>
             </div>
@@ -69,20 +69,20 @@
     font-size: 4rem;
     line-height: 1.2;
     margin: 0;
-    color: white;
+    color: #386641;
     font-weight: 800;
     letter-spacing: -0.02em;
 }
 
 .highlight {
-    color: #FFD60A;
-    text-shadow: 0 0 20px rgba(255, 214, 10, 0.5);
+    color: #6a994e;
+    text-shadow: 0 0 20px rgba(106, 153, 78, 0.4);
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(56, 102, 65, 0.8);
     margin: 0;
     max-width: 600px;
 }
@@ -120,26 +120,26 @@
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #FFD60A 0%, #ffa500 100%);
-    color: #1a1a1a;
-    box-shadow: 0 4px 15px rgba(255, 214, 10, 0.3);
+    background: linear-gradient(135deg, #6a994e 0%, #386641 100%);
+    color: #f2e8cf;
+    box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(255, 214, 10, 0.5);
+    box-shadow: 0 6px 20px rgba(106, 153, 78, 0.5);
     transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    border: 2px solid rgba(255, 214, 10, 0.3);
+    background: rgba(164, 184, 196, 0.15);
+    color: #386641;
+    border: 2px solid rgba(106, 153, 78, 0.4);
     backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 214, 10, 0.5);
+    background: rgba(164, 184, 196, 0.25);
+    border-color: rgba(106, 153, 78, 0.6);
     transform: translateY(-2px);
 }
 
@@ -161,18 +161,19 @@
 }
 
 .feature-card {
-    background: rgba(30, 30, 40, 0.6);
+    background: rgba(164, 184, 196, 0.4);
     backdrop-filter: blur(10px);
     border-radius: 1rem;
-    border: 1px solid rgba(255, 214, 10, 0.2);
+    border: 2px solid rgba(106, 153, 78, 0.3);
     padding: 1.5rem;
     transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 214, 10, 0.4);
-    box-shadow: 0 8px 24px rgba(255, 214, 10, 0.15);
+    background: rgba(164, 184, 196, 0.5);
+    border-color: rgba(106, 153, 78, 0.5);
+    box-shadow: 0 8px 24px rgba(106, 153, 78, 0.2);
 }
 
 .feature-icon {
@@ -182,14 +183,14 @@
 
 .feature-card h3 {
     font-size: 1.25rem;
-    color: #FFD60A;
+    color: #386641;
     margin: 0 0 0.5rem 0;
     font-weight: 700;
 }
 
 .feature-card p {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(56, 102, 65, 0.7);
     margin: 0;
     line-height: 1.5;
 }

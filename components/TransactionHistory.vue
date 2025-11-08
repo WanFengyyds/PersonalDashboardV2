@@ -49,9 +49,9 @@
 
 <style scoped>
 .transaction-history-box {
-  background: rgba(30, 30, 40, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
-  color: #ffffff;
+  color: #386641;
   padding: 2rem;
   border-radius: 1.25rem;
   box-shadow:
@@ -61,12 +61,12 @@
   height: 420px;
   box-sizing: border-box;
   margin-top: 2rem;
-  border: 1px solid rgba(255, 214, 10, 0.2);
+  border: 1px solid rgba(167, 201, 87, 0.2);
 }
 .history-Title {
   font-size: 1.5em;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  color: #386641;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -87,12 +87,12 @@
 }
 
 .transaction-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 214, 10, 0.4);
+  background: rgba(167, 201, 87, 0.4);
   border-radius: 10px;
 }
 
 .transaction-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 214, 10, 0.6);
+  background: rgba(167, 201, 87, 0.6);
 }
 
 .transaction-item {
@@ -107,9 +107,9 @@
 }
 
 .transaction-item:hover {
-  background-color: rgba(255, 214, 10, 0.05);
+  background-color: rgba(167, 201, 87, 0.05);
   transform: translateX(4px);
-  border-left: 3px solid rgba(255, 214, 10, 0.6);
+  border-left: 3px solid rgba(167, 201, 87, 0.6);
 }
 
 .transaction-item:last-child {
@@ -118,7 +118,7 @@
 
 .transaction-description {
   font-size: 1.05em;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(56, 102, 65, 0.9);
   font-weight: 500;
 }
 .transaction-amount {
@@ -127,7 +127,7 @@
   letter-spacing: -0.01em;
 }
 .money {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(56, 102, 65, 0.8);
 }
 
 .transaction-amount.positive {

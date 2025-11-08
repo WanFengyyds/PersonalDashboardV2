@@ -112,16 +112,16 @@ const handleLogin = async () => {
 }
 
 .login-box {
-  background: rgba(30, 30, 40, 0.8);
+  background: rgba(164, 184, 196, 0.4);
   backdrop-filter: blur(20px);
   border-radius: 1.5rem;
   padding: 3rem;
   width: 100%;
   max-width: 450px;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 214, 10, 0.2);
+    0 8px 32px rgba(56, 102, 65, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(106, 153, 78, 0.3);
 }
 
 .login-header {
@@ -132,14 +132,14 @@ const handleLogin = async () => {
 .login-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #FFD60A;
-  text-shadow: 0 0 30px rgba(255, 214, 10, 0.3);
+  color: #386641;
+  text-shadow: 0 0 30px rgba(167, 201, 87, 0.2);
   margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
 
 .login-subtitle {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(56, 102, 65, 0.7);
   font-size: 1.1rem;
   font-weight: 400;
 }
@@ -169,7 +169,7 @@ const handleLogin = async () => {
 .form-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(56, 102, 65, 0.9);
   letter-spacing: 0.02em;
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -177,20 +177,20 @@ const handleLogin = async () => {
 
 .input-box {
   padding: 1rem 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(106, 153, 78, 0.2);
   border-radius: 0.75rem;
-  color: #ffffff;
+  color: #386641;
   font-size: 1rem;
   font-weight: 500;
-  background: rgba(20, 20, 30, 0.6);
+  background: rgba(242, 232, 207, 0.6);
   transition: all 0.2s ease-in-out;
   outline: none;
 }
 
 .input-box:focus {
-  border-color: rgba(255, 214, 10, 0.6);
-  box-shadow: 0 0 0 3px rgba(255, 214, 10, 0.1);
-  background: rgba(20, 20, 30, 0.8);
+  border-color: rgba(106, 153, 78, 0.6);
+  box-shadow: 0 0 0 3px rgba(167, 201, 87, 0.1);
+  background: rgba(242, 232, 207, 0.9);
 }
 
 .input-box:disabled {
@@ -199,15 +199,15 @@ const handleLogin = async () => {
 }
 
 .input-box::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(56, 102, 65, 0.4);
   font-weight: 400;
 }
 
 .login-button {
   margin-top: 1rem;
   padding: 1.125rem 1.5rem;
-  background: linear-gradient(135deg, #FFD60A 0%, #ffa500 100%);
-  color: #1a1a1a;
+  background: linear-gradient(135deg, #6a994e 0%, #386641 100%);
+  color: #f2e8cf;
   border: none;
   border-radius: 0.75rem;
   font-size: 1.05rem;
@@ -215,24 +215,24 @@ const handleLogin = async () => {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow:
-    0 4px 15px rgba(255, 214, 10, 0.3),
-    0 0 20px rgba(255, 214, 10, 0.1);
+    0 4px 15px rgba(106, 153, 78, 0.3),
+    0 0 20px rgba(106, 153, 78, 0.1);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .login-button:hover:not(:disabled) {
   box-shadow:
-    0 6px 20px rgba(255, 214, 10, 0.4),
-    0 0 30px rgba(255, 214, 10, 0.2);
+    0 6px 20px rgba(106, 153, 78, 0.4),
+    0 0 30px rgba(106, 153, 78, 0.2);
   transform: translateY(-2px);
 }
 
 .login-button:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
-    0 4px 15px rgba(255, 214, 10, 0.3),
-    0 0 20px rgba(255, 214, 10, 0.1);
+    0 4px 15px rgba(106, 153, 78, 0.3),
+    0 0 20px rgba(106, 153, 78, 0.1);
 }
 
 .login-button:disabled {
@@ -244,23 +244,23 @@ const handleLogin = async () => {
   text-align: center;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(106, 153, 78, 0.2);
 }
 
 .login-footer p {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(56, 102, 65, 0.7);
   font-size: 0.95rem;
 }
 
 .signup-link {
-  color: #FFD60A;
+  color: #a7c957;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
 .signup-link:hover {
-  color: #ffa500;
+  color: #6a994e;
   text-decoration: underline;
 }
 

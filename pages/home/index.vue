@@ -24,11 +24,12 @@
     align-items: center;
     height: 100vh;
     width: 100%;
+    background-color: #f2e8cf;
 }
 
 .features-section {
     padding: 4rem 2rem;
-    background-color: black;
+    background-color: #e8dfc7;
 }
 </style>
 

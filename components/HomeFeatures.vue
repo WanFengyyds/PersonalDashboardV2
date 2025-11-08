@@ -42,15 +42,15 @@
     margin: 0 auto;
     padding: 4rem 2rem;
     text-align: center;
-    color: white;
+    color: #386641;
 }
 
 .features-section h2 {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 3rem;
-    color: white;
-    text-shadow: 0 0 20px rgba(255, 214, 10, 0.3);
+    color: #386641;
+    text-shadow: 0 0 20px rgba(106, 153, 78, 0.2);
 }
 
 .feauture-list {
@@ -61,20 +61,21 @@
 }
 
 .feature-card {
-    background: rgba(30, 30, 40, 0.6);
+    background: rgba(164, 184, 196, 0.4);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 214, 10, 0.2);
+    border: 2px solid rgba(106, 153, 78, 0.3);
     border-radius: 1.25rem;
     padding: 2.5rem 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(56, 102, 65, 0.1);
     transition: all 0.3s ease;
     text-align: center;
 }
 
 .feature-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(255, 214, 10, 0.4);
-    box-shadow: 0 12px 30px rgba(255, 214, 10, 0.15);
+    background: rgba(164, 184, 196, 0.5);
+    border-color: rgba(106, 153, 78, 0.6);
+    box-shadow: 0 12px 30px rgba(106, 153, 78, 0.2);
 }
 
 .feature-icon {
@@ -87,17 +88,17 @@
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #FFD60A;
+    color: #386641;
 }
 
 .feature-card p {
     font-size: 1rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(56, 102, 65, 0.8);
     margin: 0;
 }
 .highlight {
-    color: #FFD60A;
-    text-shadow: 0 0 15px rgba(255, 214, 10, 0.4);
+    color: #6a994e;
+    text-shadow: 0 0 15px rgba(167, 201, 87, 0.4);
 }
 </style>

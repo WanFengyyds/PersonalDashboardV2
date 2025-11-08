@@ -35,13 +35,13 @@ definePageMeta({
 .dashboard-title {
   font-size: 3em;
   font-weight: 700;
-  color: #ffffff;
+  color: #386641;
   letter-spacing: -0.02em;
-  text-shadow: 0 0 30px rgba(255, 214, 10, 0.3);
+  text-shadow: 0 0 30px rgba(167, 201, 87, 0.3);
 }
 
 .dashboard-subtitle {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(56, 102, 65, 0.7);
   font-size: 1.15em;
   font-weight: 400;
   letter-spacing: 0.01em;
@@ -59,9 +59,9 @@ definePageMeta({
   text-align: center;
   max-width: 500px;
   padding: 3rem;
-  background: rgba(30, 30, 40, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 214, 10, 0.2);
+  border: 1px solid rgba(167, 201, 87, 0.2);
 }
 
 .icon {
@@ -72,12 +72,12 @@ definePageMeta({
 .placeholder h2 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #FFD60A;
+  color: #a7c957;
   margin-bottom: 1rem;
 }
 
 .placeholder p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(56, 102, 65, 0.7);
   font-size: 1.1rem;
   line-height: 1.6;
 }
