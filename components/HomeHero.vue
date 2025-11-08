@@ -76,7 +76,7 @@
 
 .highlight {
     color: #6a994e;
-    text-shadow: 0 0 20px rgba(106, 153, 78, 0.4);
+    text-shadow: none;
 }
 
 .hero-subtitle {
@@ -113,6 +113,7 @@
     position: relative;
     z-index: 10;
     pointer-events: all;
+    border: none;
 }
 
 .btn .icon {
@@ -122,23 +123,23 @@
 .btn-primary {
     background: linear-gradient(135deg, #6a994e 0%, #386641 100%);
     color: #f2e8cf;
-    box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
+    box-shadow: 0 2px 8px rgba(106, 153, 78, 0.2);
+    border: 2px solid rgba(56, 102, 65, 0.3);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(106, 153, 78, 0.5);
+    box-shadow: 0 4px 12px rgba(106, 153, 78, 0.3);
     transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background: rgba(164, 184, 196, 0.15);
+    background: rgba(164, 184, 196, 0.3);
     color: #386641;
     border: 2px solid rgba(106, 153, 78, 0.4);
-    backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-    background: rgba(164, 184, 196, 0.25);
+    background: rgba(164, 184, 196, 0.4);
     border-color: rgba(106, 153, 78, 0.6);
     transform: translateY(-2px);
 }
