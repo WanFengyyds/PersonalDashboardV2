@@ -3,7 +3,7 @@ const route = useRoute()
 
 // Check if we're on the home page
 const isHomePage = computed(() => {
-  return route.path === '/' || route.path === '/home' || route.path === '/login';
+  return route.path === '/' || route.path === '/home' || route.path === '/login' || route.path === '/signup'
 })
 
 // Reactive state for login status

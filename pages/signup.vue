@@ -1,28 +1,37 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
-// Initialize variables
 const email = ref('');
 const password = ref('');
+const confirmPassword = ref('');
 const loading = ref(false);
 const error = ref('');
+const success = ref(false);
 
-// Before starting doing the hole thing, check if user already logged in
-// Wrapped in onMounted to only run on client-side
 onMounted(() => {
   if (localStorage.getItem('session')) {
     navigateTo('/finance', { replace: true });
   }
 });
 
-// Handle login form submission
-const handleLogin = async () => {
+const handleSignup = async () => {
   error.value = '';
   loading.value = true;
 
+  if (password.value !== confirmPassword.value) {
+    error.value = 'Passwords do not match';
+    loading.value = false;
+    return;
+  }
+
+  if (password.value.length < 6) {
+    error.value = 'Password must be at least 6 characters';
+    loading.value = false;
+    return;
+  }
+
   try {
-    // Call login API from login.post.ts using /api/auth/login
-    const response: any = await $fetch('/api/auth/login', {
+    const response: any = await $fetch('/api/auth/signup', {
       method: 'POST',
       body: {
         email: email.value,
@@ -30,20 +39,15 @@ const handleLogin = async () => {
       }
     });
 
-    // If successful, store session data to local storage, and redirect to finance page
-    if (response?.session) {
-        // Dont need to store user data beacause it can be fetched from session from a ramdom bug
-        localStorage.setItem('session', JSON.stringify(response.session));
-        
-        // Dispatch custom event to notify navbar of login
-        window.dispatchEvent(new Event('login'));
-        
-        // Redirect to finance page
-        navigateTo('/finance');
+    if (response?.user) {
+      success.value = true;
+      setTimeout(() => {
+        navigateTo('/login');
+      }, 2000);
     }
   } catch (err: any) {
-    console.error('Login failed:', err);
-    error.value = err.data?.error || 'Login failed. Please try again.';
+    console.error('Signup failed:', err);
+    error.value = err.data?.error || 'Signup failed. Please try again.';
   } finally {
     loading.value = false;
   }
@@ -51,16 +55,20 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <main class="login-container">
-    <div class="login-box">
-      <div class="login-header">
-        <h1 class="login-title">KaiPlanner</h1>
-        <p class="login-subtitle">Sign in to your account</p>
+  <main class="signup-container">
+    <div class="signup-box">
+      <div class="signup-header">
+        <h1 class="signup-title">KaiPlanner</h1>
+        <p class="signup-subtitle">Create your account</p>
       </div>
 
-      <form @submit.prevent="handleLogin" class="login-form">
+      <form @submit.prevent="handleSignup" class="signup-form">
         <div v-if="error" class="error-message">
           {{ error }}
+        </div>
+
+        <div v-if="success" class="success-message">
+          Account created successfully! Redirecting to login...
         </div>
 
         <div class="form-group">
@@ -72,7 +80,7 @@ const handleLogin = async () => {
             class="input-box"
             placeholder="Enter your email"
             required
-            :disabled="loading"
+            :disabled="loading || success"
           />
         </div>
 
@@ -85,17 +93,31 @@ const handleLogin = async () => {
             class="input-box"
             placeholder="Enter your password"
             required
-            :disabled="loading"
+            :disabled="loading || success"
           />
         </div>
 
-        <button type="submit" class="login-button" :disabled="loading">
-          <span v-if="!loading">Sign In</span>
-          <span v-else>Signing in...</span>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            v-model="confirmPassword"
+            class="input-box"
+            placeholder="Confirm your password"
+            required
+            :disabled="loading || success"
+          />
+        </div>
+
+        <button type="submit" class="signup-button" :disabled="loading || success">
+          <span v-if="!loading && !success">Sign Up</span>
+          <span v-else-if="loading">Creating account...</span>
+          <span v-else>Success!</span>
         </button>
 
-        <div class="login-footer">
-          <p>Don't have an account? <NuxtLink to="/signup" class="signup-link">Sign up</NuxtLink></p>
+        <div class="signup-footer">
+          <p>Already have an account? <NuxtLink to="/login" class="login-link">Sign in</NuxtLink></p>
         </div>
       </form>
     </div>
@@ -103,7 +125,7 @@ const handleLogin = async () => {
 </template>
 
 <style scoped>
-.login-container {
+.signup-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -111,7 +133,7 @@ const handleLogin = async () => {
   padding: 2rem;
 }
 
-.login-box {
+.signup-box {
   background: rgba(164, 184, 196, 0.4);
   backdrop-filter: blur(20px);
   border-radius: 1.5rem;
@@ -124,12 +146,12 @@ const handleLogin = async () => {
   border: 2px solid rgba(106, 153, 78, 0.3);
 }
 
-.login-header {
+.signup-header {
   text-align: center;
   margin-bottom: 2.5rem;
 }
 
-.login-title {
+.signup-title {
   font-size: 2.5rem;
   font-weight: 800;
   color: #386641;
@@ -138,13 +160,13 @@ const handleLogin = async () => {
   letter-spacing: -0.01em;
 }
 
-.login-subtitle {
+.signup-subtitle {
   color: rgba(56, 102, 65, 0.7);
   font-size: 1.1rem;
   font-weight: 400;
 }
 
-.login-form {
+.signup-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -153,11 +175,23 @@ const handleLogin = async () => {
 .error-message {
   background: rgba(248, 113, 113, 0.15);
   border: 1px solid rgba(248, 113, 113, 0.3);
-  color: #fca5a5;
+  color: #dc2626;
   padding: 1rem;
   border-radius: 0.75rem;
   font-size: 0.9rem;
   text-align: center;
+  font-weight: 500;
+}
+
+.success-message {
+  background: rgba(167, 201, 87, 0.15);
+  border: 1px solid rgba(106, 153, 78, 0.3);
+  color: #386641;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 500;
 }
 
 .form-group {
@@ -167,12 +201,11 @@ const handleLogin = async () => {
 }
 
 .form-group label {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: rgba(56, 102, 65, 0.9);
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  font-size: 0.85rem;
 }
 
 .input-box {
@@ -203,7 +236,7 @@ const handleLogin = async () => {
   font-weight: 400;
 }
 
-.login-button {
+.signup-button {
   margin-top: 1rem;
   padding: 1.125rem 1.5rem;
   background: linear-gradient(135deg, #6a994e 0%, #386641 100%);
@@ -221,59 +254,59 @@ const handleLogin = async () => {
   letter-spacing: 0.05em;
 }
 
-.login-button:hover:not(:disabled) {
+.signup-button:hover:not(:disabled) {
   box-shadow:
     0 6px 20px rgba(106, 153, 78, 0.4),
     0 0 30px rgba(106, 153, 78, 0.2);
   transform: translateY(-2px);
 }
 
-.login-button:active:not(:disabled) {
+.signup-button:active:not(:disabled) {
   transform: translateY(0);
   box-shadow:
     0 4px 15px rgba(106, 153, 78, 0.3),
     0 0 20px rgba(106, 153, 78, 0.1);
 }
 
-.login-button:disabled {
+.signup-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
 
-.login-footer {
+.signup-footer {
   text-align: center;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(106, 153, 78, 0.2);
 }
 
-.login-footer p {
+.signup-footer p {
   color: rgba(56, 102, 65, 0.7);
   font-size: 0.95rem;
 }
 
-.signup-link {
+.login-link {
   color: #a7c957;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
-.signup-link:hover {
+.login-link:hover {
   color: #6a994e;
   text-decoration: underline;
 }
 
 @media (max-width: 640px) {
-  .login-box {
+  .signup-box {
     padding: 2rem 1.5rem;
   }
 
-  .login-title {
+  .signup-title {
     font-size: 2rem;
   }
 
-  .login-subtitle {
+  .signup-subtitle {
     font-size: 1rem;
   }
 }
