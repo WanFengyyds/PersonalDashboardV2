@@ -1,35 +1,90 @@
-<script lang="ts"></script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import AutoComplete from 'primevue/autocomplete';
+const loading = ref(false);
+const error = ref('');
+
+const getDescription = async () => {
+  // Reset error and set loading state
+  error.value = '';
+  loading.value = true;
+
+  try {
+    // Fetch user id from session
+    const sessionStr = localStorage.getItem('session');
+    const session = JSON.parse(sessionStr || '{}');
+
+    const response: any = await $fetch('/api/finance/description', {
+      method: 'POST',
+      body: {
+        user_id: session.user?.id,
+      }
+    });
+    
+    console.log('API Response:', response);
+    
+    if (response?.data) {
+      return response.data;
+    }
+  } catch (err: any) {
+    console.error('Fetch error:', err);
+    error.value = err.message || 'Failed to fetch descriptions';
+  } finally {
+    loading.value = false;
+  }
+};
+
+export default defineComponent({
+  name: 'AddTransaction',
+  components: { AutoComplete },
+  setup() {
+    const description = ref('');
+    
+    // Store all descriptions from the database
+    const descriptionList = ref<{ description: string }[]>([]);
+    
+    // Suggestions shown by the AutoComplete
+    const filteredCountries = ref<{ name: string }[]>([]);
+
+    // Fetch descriptions on component mount
+    const loadDescriptions = async () => {
+      const data = await getDescription();
+      if (data && Array.isArray(data)) {
+        // Transform to match the format expected by AutoComplete
+        descriptionList.value = data;
+        console.log('Loaded descriptions:', descriptionList.value);
+      }
+    };
+
+    loadDescriptions();
+    function search(event: { query: string }) {
+      const query = (event && event.query) ? event.query.trim().toLowerCase() : '';
+      if (!query) {
+        filteredCountries.value = [];
+        return;
+      }
+      
+      // Filter descriptions based on user input
+      filteredCountries.value = descriptionList.value
+        .filter(item => item.description.toLowerCase().includes(query))
+        .map(item => ({ name: item.description }));
+    }
+
+    return { description, filteredCountries, search };
+  }
+});
+</script>
 
 <template>
   <main>
     <div class="transaction-box">
+    <div class="header">
+      <div class="icon-wrapper">
+        <span class="header-icon">💸</span>
+      </div>
       <h2 class="add-Title">Add New Transaction</h2>
-      <!-- Form for adding new transaction -->
-      <form-group class="transaction-form">
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" id="description" name="description" class="input-box" required />
-        </div>
-        <div class="form-group">
-          <label for="amount">Amount</label>
-          <input type="number" id="amount" name="amount" class="input-box" required />
-        </div>
-        <div class="form-group">
-          <label for="category">Category</label>
-          <select id="type" name="type" class="input-box" required>
-            <option value="income">Food and Drinks</option>
-            <option value="expense">Games</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="type">Type</label>
-          <select id="type" name="type" class="input-box" required>
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-          </select>
-        </div>
-        <button type="submit">Add Transaction</button>
-      </form-group>
+    </div> 
+        <AutoComplete v-model="description" optionLabel="name" :suggestions="filteredCountries" @complete="search"/>
     </div>
   </main>
 </template>
@@ -38,6 +93,118 @@
 main {
   margin-top: 2rem;
 }
+
+/* ======= AUTOCOMPLETE STYLING ======= */
+/* Input field styling */
+:deep(.p-autocomplete) {
+  width: 100%;
+}
+
+:deep(.p-autocomplete-input) {
+  padding: 0.875rem 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: #386641;
+  font-size: 1em;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+:deep(.p-autocomplete-input:hover) {
+  border-color: rgba(56, 102, 65, 0.2);
+}
+
+:deep(.p-autocomplete-input:focus) {
+  border-color: rgba(167, 201, 87, 0.6);
+  box-shadow: 0 0 0 3px rgba(167, 201, 87, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+:deep(.p-autocomplete-input::placeholder) {
+  color: rgba(56, 102, 65, 0.4);
+  font-weight: 400;
+}
+
+:deep(.p-autocomplete-input:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(56, 102, 65, 0.4);
+  cursor: not-allowed;
+}
+</style>
+
+<!-- Global styles for dropdown panel (it's portaled to body) -->
+<style>
+/* ======= AUTOCOMPLETE DROPDOWN STYLING ======= */
+/* Dropdown panel container */
+.p-autocomplete-overlay {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(167, 201, 87, 0.2) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  margin-top: 0.5rem;
+}
+
+/* List container and list */
+.p-autocomplete-list-container {
+  overflow: auto;
+  max-height: 300px;
+}
+
+.p-autocomplete-list {
+  padding: 0.5rem !important;
+  list-style: none;
+  margin: 0 !important;
+}
+
+/* Dropdown options */
+.p-autocomplete-option {
+  padding: 0.75rem 1rem !important;
+  margin: 0.25rem 0;
+  border-radius: 0.5rem !important;
+  color: #386641 !important;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.p-autocomplete-option:hover {
+  background: rgba(167, 201, 87, 0.15) !important;
+  color: #386641 !important;
+}
+
+.p-autocomplete-option:focus,
+.p-autocomplete-option.p-focus {
+  background: rgba(167, 201, 87, 0.2) !important;
+  color: #386641 !important;
+  outline: none;
+}
+
+.p-autocomplete-option.p-selected {
+  background: rgba(167, 201, 87, 0.3) !important;
+  color: #386641 !important;
+  font-weight: 600;
+}
+
+.p-autocomplete-option.p-selected:focus {
+  background: rgba(167, 201, 87, 0.4) !important;
+  color: #386641 !important;
+}
+
+/* Empty message when no results */
+.p-autocomplete-empty-message {
+  padding: 1rem !important;
+  color: rgba(56, 102, 65, 0.6) !important;
+  text-align: center;
+  font-style: italic;
+}
+</style>
+
+<style scoped>
 .transaction-box {
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
@@ -51,13 +218,55 @@ main {
   box-sizing: border-box;
   border: 1px solid rgba(167, 201, 87, 0.2);
 }
+.transaction-box:hover {
+  box-shadow: 
+    0 12px 45px rgba(56, 102, 65, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-color: rgba(167, 201, 87, 0.4);
+}
 
-.add-Title {
-  font-size: 1.5em;
-  margin-bottom: 1.5rem;
+/* ======= ADD TRANSACTION HEADER ======= */
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(167, 201, 87, 0.2);
+}
+.icon-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(167, 201, 87, 0.2), rgba(106, 153, 78, 0.3));
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(167, 201, 87, 0.3);
+}
+
+.header-icon {
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.add-title {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
   color: #386641;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .form-group {
@@ -145,7 +354,7 @@ select.input-box option:disabled {
 button[type='submit'] {
   margin-top: 0.75rem;
   padding: 1rem 1.5rem;
-  background: #f2e8cf 100%);
+  background: #f2e8cf 100%;
   color: #386641;
   border: none;
   border-radius: 0.75rem;
