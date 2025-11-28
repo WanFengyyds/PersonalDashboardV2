@@ -1,50 +1,62 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import AutoComplete from 'primevue/autocomplete';
+import { defineComponent, ref } from "vue";
+import AutoComplete from "primevue/autocomplete";
+import FloatLabel from "primevue/floatlabel";
+import InputGroup from "primevue/inputgroup";
+import InputGroupAddon from "primevue/inputgroupaddon";
+import InputNumber from "primevue/inputnumber";
 const loading = ref(false);
-const error = ref('');
+const error = ref("");
+const number = ref(null);
 
 const getDescription = async () => {
   // Reset error and set loading state
-  error.value = '';
+  error.value = "";
   loading.value = true;
 
   try {
     // Fetch user id from session
-    const sessionStr = localStorage.getItem('session');
-    const session = JSON.parse(sessionStr || '{}');
+    const sessionStr = localStorage.getItem("session");
+    const session = JSON.parse(sessionStr || "{}");
 
-    const response: any = await $fetch('/api/finance/description', {
-      method: 'POST',
+    const response: any = await $fetch("/api/finance/description", {
+      method: "POST",
       body: {
         user_id: session.user?.id,
-      }
+      },
     });
-    
-    console.log('API Response:', response);
-    
+
+    console.log("API Response:", response);
+
     if (response?.data) {
       return response.data;
     }
   } catch (err: any) {
-    console.error('Fetch error:', err);
-    error.value = err.message || 'Failed to fetch descriptions';
+    console.error("Fetch error:", err);
+    error.value = err.message || "Failed to fetch descriptions";
   } finally {
     loading.value = false;
   }
 };
 
 export default defineComponent({
-  name: 'AddTransaction',
-  components: { AutoComplete },
+  name: "AddTransaction",
+  components: {
+    AutoComplete,
+    FloatLabel,
+    InputGroup,
+    InputGroupAddon,
+    InputNumber,
+  },
   setup() {
-    const description = ref('');
-    
+    const description = ref("");
+    const number = ref<number | null>(null);
+
     // Store all descriptions from the database
     const descriptionList = ref<{ description: string }[]>([]);
-    
+
     // Suggestions shown by the AutoComplete
-    const filteredCountries = ref<{ name: string }[]>([]);
+    const filteredDescriptions = ref<{ name: string }[]>([]);
 
     // Fetch descriptions on component mount
     const loadDescriptions = async () => {
@@ -52,39 +64,52 @@ export default defineComponent({
       if (data && Array.isArray(data)) {
         // Transform to match the format expected by AutoComplete
         descriptionList.value = data;
-        console.log('Loaded descriptions:', descriptionList.value);
       }
     };
 
     loadDescriptions();
     function search(event: { query: string }) {
-      const query = (event && event.query) ? event.query.trim().toLowerCase() : '';
+      const query =
+        event && event.query ? event.query.trim().toLowerCase() : "";
       if (!query) {
-        filteredCountries.value = [];
+        filteredDescriptions.value = [];
         return;
       }
-      
+
       // Filter descriptions based on user input
-      filteredCountries.value = descriptionList.value
-        .filter(item => item.description.toLowerCase().includes(query))
-        .map(item => ({ name: item.description }));
+      filteredDescriptions.value = descriptionList.value
+        .filter((item) => item.description.toLowerCase().includes(query))
+        .map((item) => ({ name: item.description }));
     }
 
-    return { description, filteredCountries, search };
-  }
+    return { description, filteredDescriptions, search, number };
+  },
 });
 </script>
 
 <template>
   <main>
     <div class="transaction-box">
-    <div class="header">
-      <div class="icon-wrapper">
-        <span class="header-icon">💸</span>
+      <div class="header">
+        <div class="icon-wrapper">
+          <span class="header-icon">💸</span>
+        </div>
+        <h2 class="add-Title">Add New Transaction</h2>
       </div>
-      <h2 class="add-Title">Add New Transaction</h2>
-    </div> 
-        <AutoComplete v-model="description" optionLabel="name" :suggestions="filteredCountries" @complete="search"/>
+      <AutoComplete
+        v-model="description"
+        inputId="description_input"
+        optionLabel="name"
+        :suggestions="filteredDescriptions"
+        placeholder="Description"
+        @complete="search"
+      />
+
+      <InputGroup>
+        <InputGroupAddon>$</InputGroupAddon>
+        <InputNumber v-model="number" placeholder="Price" />
+        <InputGroupAddon>.00</InputGroupAddon>
+      </InputGroup>
     </div>
   </main>
 </template>
@@ -133,6 +158,73 @@ main {
   background: rgba(255, 255, 255, 0.2);
   color: rgba(56, 102, 65, 0.4);
   cursor: not-allowed;
+}
+
+/* ======= INPUT GROUP STYLING ======= */
+:deep(.p-inputgroup) {
+  margin-top: 1.5rem;
+}
+
+:deep(.p-inputnumber-input) {
+  padding: 0.875rem 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #386641;
+  font-size: 1em;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  border-radius: 0;
+}
+
+:deep(.p-inputnumber-input:hover) {
+  border-color: rgba(56, 102, 65, 0.2);
+}
+
+:deep(.p-inputnumber-input:focus) {
+  border-color: rgba(167, 201, 87, 0.6);
+  box-shadow: 0 0 0 3px rgba(167, 201, 87, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+:deep(.p-inputnumber-input::placeholder) {
+  color: rgba(56, 102, 65, 0.4);
+  font-weight: 400;
+}
+
+:deep(.p-inputgroupaddon) {
+  --p-inputgroup-addon-background: rgba(167, 201, 87, 0.2);
+  --p-inputgroup-addon-border-color: rgba(255, 255, 255, 0.1);
+  --p-inputgroup-addon-color: #386641;
+  --p-inputgroup-addon-padding: 0.875rem 1rem;
+  font-weight: 600;
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+}
+
+:deep(.p-inputgroup-addon:first-child) {
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+  border-right: none;
+}
+
+:deep(.p-inputgroup-addon:last-child) {
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  border-left: none;
+}
+
+:deep(.p-inputnumber) {
+  flex: 1;
+}
+
+:deep(.p-inputgroup:hover .p-inputnumber-input) {
+  border-color: rgba(56, 102, 65, 0.2);
+}
+
+:deep(.p-inputgroup:hover .p-inputgroupaddon) {
+  --p-inputgroup-addon-background: rgba(167, 201, 87, 0.3);
+  --p-inputgroup-addon-border-color: rgba(56, 102, 65, 0.2);
 }
 </style>
 
@@ -211,16 +303,14 @@ main {
   color: #386641;
   padding: 2rem;
   border-radius: 1.25rem;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(167, 201, 87, 0.2);
 }
 .transaction-box:hover {
-  box-shadow: 
-    0 12px 45px rgba(56, 102, 65, 0.15),
+  box-shadow: 0 12px 45px rgba(56, 102, 65, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
   border-color: rgba(167, 201, 87, 0.4);
 }
@@ -241,7 +331,11 @@ main {
   align-items: center;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, rgba(167, 201, 87, 0.2), rgba(106, 153, 78, 0.3));
+  background: linear-gradient(
+    135deg,
+    rgba(167, 201, 87, 0.2),
+    rgba(106, 153, 78, 0.3)
+  );
   border-radius: 50%;
   margin-bottom: 1rem;
   box-shadow: 0 4px 15px rgba(167, 201, 87, 0.3);
@@ -253,7 +347,8 @@ main {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -351,7 +446,7 @@ select.input-box option:disabled {
 }
 
 /* Button styling */
-button[type='submit'] {
+button[type="submit"] {
   margin-top: 0.75rem;
   padding: 1rem 1.5rem;
   background: #f2e8cf 100%;
@@ -362,25 +457,22 @@ button[type='submit'] {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow:
-    0 4px 15px rgba(167, 201, 87, 0.3),
+  box-shadow: 0 4px 15px rgba(167, 201, 87, 0.3),
     0 0 20px rgba(167, 201, 87, 0.1);
   width: 100%;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
-button[type='submit']:hover {
-  box-shadow:
-    0 6px 20px rgba(167, 201, 87, 0.4),
+button[type="submit"]:hover {
+  box-shadow: 0 6px 20px rgba(167, 201, 87, 0.4),
     0 0 30px rgba(167, 201, 87, 0.2);
   transform: translateY(-2px);
 }
 
-button[type='submit']:active {
+button[type="submit"]:active {
   transform: translateY(0);
-  box-shadow:
-    0 4px 15px rgba(167, 201, 87, 0.3),
+  box-shadow: 0 4px 15px rgba(167, 201, 87, 0.3),
     0 0 20px rgba(167, 201, 87, 0.1);
 }
 </style>
